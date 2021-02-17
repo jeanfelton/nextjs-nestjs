@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  db:
+    container_name: my_app_db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres.2020
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+
+  adminer:
+    container_name: my_app_db_adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
