@@ -4,9 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { environment } from './env.schema';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthController } from './auth/auth.controller';
-import { AuthService } from './auth/auth.service';
-import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
 
 
 
@@ -17,9 +15,10 @@ import { UserController } from './user/user.controller';
       expandVariables:true,
       validationSchema: environment
     }),
-    TypeOrmModule.forRoot()
+    TypeOrmModule.forRoot(),
+    UserModule
   ],
-  controllers: [AppController, AuthController, UserController],
-  providers: [AppService, AuthService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
