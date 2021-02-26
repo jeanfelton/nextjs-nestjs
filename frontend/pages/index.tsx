@@ -1,9 +1,11 @@
 import Head from 'next/head'
 
-export default function Home() {
+ const home = () => {
   return (
     <div>
-      <h1>Welcome page</h1>
+      <h1>Home</h1>
    </div>
   )
 }
+
+export default home
