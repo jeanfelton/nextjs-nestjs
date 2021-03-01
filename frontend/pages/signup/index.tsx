@@ -1,26 +1,43 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
+import { Input, Button } from "antd";
+import styles from "./SignUp.module.scss";
 
 const index = () => {
   type Inputs = {
-    example: string;
-    exampleRequired: string;
+    email: string;
+    password: string;
   };
 
-  const { register, handleSubmit, watch, errors } = useForm<Inputs>();
-  const onSubmit = (data) => console.log(data);
+  const { register, handleSubmit, watch, errors, control } = useForm<Inputs>();
+  const onSubmit = (data) => {console.log(data);}
 
   return (
-    <div>
+    <div className={styles.formContainer}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input name="example" defaultValue="test" ref={register} />
+        <div className={styles.formElement}>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""            
+            render={({ onChange, value }) => (
+              <Input placeholder="enter email" onChange={onChange} value={value} />
+            )}
+          />
+        </div>
+        <div className={styles.formElement}>
+        <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            render={({ onChange, value }) => (
+              <Input placeholder="enter password" onChange={onChange} value={value} />
+            )}
+          />
+          {/* <input name="exampleRequired" ref={register({ required: true })} />
+          {errors.password && <span>This field is required</span>} */}
         </div>
         <div>
-          <input name="exampleRequired" ref={register({ required: true })} />
-          {errors.exampleRequired && <span>This field is required</span>}
-        </div>
-        <div>
-          <input type="submit" />
+        <Button type="primary"  htmlType="submit">Register</Button>
         </div>
       </form>
     </div>

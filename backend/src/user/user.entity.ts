@@ -15,12 +15,14 @@ export class User {
 
     @Column()
     email: string;
+
+    @Column()
+    password:string;
     
     @Column({
-        default:EnUserRoles.USER,
-        type:"enum"
+        default:EnUserRoles.USER       
     })
-    role: string;
+    role: EnUserRoles;
 
 
 }
