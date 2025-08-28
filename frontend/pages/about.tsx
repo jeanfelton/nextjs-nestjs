@@ -3,7 +3,7 @@
     return (
         <div>
             <h1>
-                About 2 - to create test PR
+                About 2.2 - to create test PR
             </h1>
         </div>
     )
